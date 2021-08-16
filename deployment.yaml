@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: napg-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: devops-app
+  template:
+    metadata:
+      labels:
+        app: devops-app
+    spec:
+      containers:
+      - name: c-ojasmodi
+        image: ojasmodi/serviceprovider-nagp-exam
+        ports:
+        - name: http
+          containerPort: 8081
+          protocol: TCP
+        resources:
+          requests:
+           memory: "125Mi"
+           cpu: "125m"
+           
